@@ -1,0 +1,342 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Médicos disponíveis</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='#' rel='stylesheet'>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <style>
+								:root{
+    --color--white: #ffff;
+    --color--blue1: #5F9EA0;
+    --color--blue2: #48D1CC;
+    --color--blue3: #00CED1;
+    --color--blue4: #4682B4;
+    --color--blue5: #AFEEEE;
+    --color--blue6: #008B8B;
+    --color--purple: #b040ff;
+}
+
+.img_logo_header{
+    width: 150px;
+}
+
+.header, .navigation_header{
+    margin: 0;
+    padding: 0; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header{
+    background-color: var(--color--blue4);
+    box-shadow: 1px 1px 4px var(--color--blue4);
+    height: 3.5em;  
+    justify-content: space-between;
+    padding: 0 10%;
+}
+
+.navigation_header{
+    gap: 3em;
+    z-index: 2;
+}
+
+.navigation_header a{
+    text-decoration: none;
+    color: var(--color--blue2);
+    transition: 1s;
+    font-weight: bold;
+}
+
+.active{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.active:hover{
+    background-color: var(--color--blue4);
+    color: var(--color--blue2);
+}
+
+.active-light{
+    color: var(--color--blue3);
+}
+
+.btn_icon_header{
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: var(--color--white);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+    .btn_icon_header{
+        display: block;
+    }
+    .navigation_header{
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        background-color: var(--color--blue5);
+        height: 100%;
+        width: 35vw;
+        padding: 1em;
+        animation-duration: 1s;
+        margin-left: -100vw;
+    }
+}
+
+@keyframes showSidebar {
+    from {margin-left: -100vw;}
+    top {margin-left: -10vw;}
+}
+
+								
+								::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } body{
+	background: #1470b2;
+}
+
+
+.list-group-item{
+	margin-top:10px;
+	border-radius: 5px; 
+	background: var(--color--blue4);
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	width: 1000px;
+}
+
+
+.list-group-item:hover{
+	transform: scaleX(1.1);
+}
+
+
+
+.check{
+	opacity: 0;
+	transition: all 0.6s ease-in-out;
+}
+
+.list-group-item:hover .check {
+	opacity: 1;
+
+}
+
+.about span{
+	font-size: 12px;
+	margin-right: 10px;
+
+}
+
+input[type=checkbox] {
+         position: relative;
+	       cursor: pointer;
+    }
+    input[type=checkbox]:before {
+         content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    left: 0;
+    border: 1px solid #10a3f9;
+    border-radius: 3px;
+    background-color: white;
+
+}
+    input[type=checkbox]:checked:after {
+         content: "";
+    display: block;
+    width: 7px;
+    height: 12px;
+    border: solid #007bff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 6px;
+   }
+
+  input[type="checkbox"]:checked + .check { opacity: 1; }</style>
+                                </head>
+								
+                                <body className='snippet-body'>
+									
+    <div class="header" id="header">
+        <button onclick="toggleSidebar()" class="btn_icon_header btn_icon_header-ligt">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </button>
+        <div class="logo_header">
+            <img src="https://i.imgur.com/MNE9djW.png" class="img_logo_header" alt="Logo DocOn">
+        </div>
+        <div onclick="toggleSidebar()" class="navigation_header" id="navigation_header">
+            <button class="btn_icon_header btn_icon_header-ligt">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+            <a href="inicial.php" class="active active-light">Voltar à tela anterior</a>
+            <a href="/TCC/testesdb/clinicas/mostraclin.php" class="active active-light">Clínicas</a>
+            <a href="/TCC/testesdb/landingpage.php" class="active active-light">Voltar a tela inicial</a>
+            <a href="/TCC/testesdb/logout.php" class="active active-light">Logout</a>
+        </div>
+    </div>
+                                <div class="container d-flex justify-content-center">
+
+		<ul class="list-group mt-5 text-white">
+
+			<a class="text-white" style="text-decoration: none;" href="ortopedia.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+		  	<div class="d-flex flex-row">
+			
+		  		<div class="ml-2">
+		  			<h6 class="mb-0">Ortopedia</h6>
+		  			<div class="about">
+		  				<span>x médicos</span>
+		  				
+		  			</div>
+		  		</div>
+		  	</div>
+		  	
+
+		  </li>
+		</a>
+
+		<a class="text-white" style="text-decoration: none;" href="pediatria.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+		  	<div class="d-flex flex-row">
+				
+				  
+		  		<div class="ml-2">
+		  			<h6 class="mb-0">Pediatria</h6>
+		  			<div class="about">
+		  				<span>x médicos</span>
+		  				
+		  			</div>
+		  		</div>
+		  	</div>
+
+		  </li>
+		</a>
+
+		<a class="text-white" style="text-decoration: none;" href="neurologia.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+		  	<div class="d-flex flex-row">
+				
+		  		<div class="ml-2">
+		  			<h6 class="mb-0">Neurologia</h6>
+		  			<div class="about">
+		  				<span>x médicos</span>
+		  				
+		  			</div>
+		  		</div>
+		  	</div>
+		  	
+
+		  </li>
+		</a>
+		
+		<a class="text-white" style="text-decoration: none;" href="oftalmologia.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+		  	<div class="d-flex flex-row">
+				
+		  		<div class="ml-2">
+		  			<h6 class="mb-0">Oftalmologia</h6>
+		  			<div class="about">
+		  				<span>x médicos</span>
+		  				
+		  			</div>
+		  		</div>
+		  	</div>
+		  	
+
+		  </li>
+		</a>
+
+		<a class="text-white" style="text-decoration: none;" href="psiquiatria.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+		  	<div class="d-flex flex-row">
+				
+		  		<div class="ml-2">
+		  			<h6 class="mb-0">Psiquiatria</h6>
+		  			<div class="about">
+		  				<span>x médicos</span>
+		  				
+		  			</div>
+		  		</div>
+		  	</div>
+		  	
+
+		  </li>
+		</a>
+
+		<a class="text-white" style="text-decoration: none;" href="outorrinolaringologia.html">
+		  <li class="list-group-item d-flex justify-content-between align-content-center">
+
+			<div class="d-flex flex-row">
+			  
+				<div class="ml-2">
+					<h6 class="mb-0">Outorrinolaringologia</h6>
+					<div class="about">
+						<span>x médicos</span>
+						
+					</div>
+				</div>
+			</div>
+			
+
+		</li>
+	</a>
+
+
+
+
+		  
+		  
+		</ul>
+		
+		</div>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript'></script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>
+                            
+                                </body>
+                            </html>
